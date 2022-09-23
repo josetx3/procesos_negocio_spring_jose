@@ -65,4 +65,15 @@ public class UsuarioController {
         }
     }
 
+    @DeleteMapping("/usuario/{id}")
+    public Usuario eliminarUsuario(@PathVariable Long id){
+        Usuario usuarioBD = UsuarioRepository.findById(id).get();
+        try {
+            UsuarioRepository.delete(usuarioBD);
+            return usuarioBD;
+        } catch (Exception e){
+            return null;
+        }
+    }
+
 }
